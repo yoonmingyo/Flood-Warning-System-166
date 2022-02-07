@@ -17,7 +17,27 @@ def rivers_with_station(stations):
     rivers = sorted(rivers)
     return rivers
 
-    
+def rivers_by_station_number(stations, N):
+    """Returns a list of the N rivers with the
+    greatest number of monitoring stations"""
+
+    stations_b_r = stations_by_river(stations)
+
+
+    number_of_stations = sorted_by_key([(river,len(stations)) for river, stations in stations_b_r.items()],1,True)
+
+    print_nos = number_of_stations[:N]
+    i = N+1
+    while True:
+        if print_nos[-1][1] == number_of_stations[i][1]:
+            print_nos.append(number_of_stations[i])
+            i+=1
+        else:
+            break
+
+    return print_nos
+
+
 def haversine_formula(x1, y1, x2, y2):
     # difference in x and y
     d_X = (x2 - x1) * math.pi / 180.0

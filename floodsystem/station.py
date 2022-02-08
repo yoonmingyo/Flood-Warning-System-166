@@ -43,7 +43,7 @@ class MonitoringStation:
         return d
     
     def typical_range_consistent(self):
-        if self.typical_range is None or float(self.typical_range[0])-float(self.typical_range[1])>0:
+        if self.typical_range is None or (float(self.typical_range[0])-float(self.typical_range[1]))>0:
             return False
         else:
             return True

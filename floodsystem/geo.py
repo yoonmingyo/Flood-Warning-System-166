@@ -7,7 +7,12 @@ geographical data.
 """
 
 from .utils import sorted_by_key  # noqa
+from .stationdata import build_station_list
+from .station import MonitoringStation
+import numpy
+import math
 
+# Task 1B
 def haversine_formula(x1, y1, x2, y2):
     # difference in x and y
     d_X = (x2 - x1) * math.pi / 180.0
@@ -23,7 +28,7 @@ def haversine_formula(x1, y1, x2, y2):
     distance = 2*r* math.asin(math.sqrt(a))
     return distance
 
-    def stations_by_distance(stations, p):
+def stations_by_distance(stations, p):
     station_distance = []
     for station in stations:
         coord_p_distance = haversine_formula(station.coord[0], station.coord[1], p[0], p[1])
@@ -33,3 +38,24 @@ def haversine_formula(x1, y1, x2, y2):
 
 
     return sorted_stations
+
+#Task 1C
+
+def stations_within_radius(stations, centre, r):
+    stations_within = []
+    for station in stations:
+        if haversine_formula(station.coord[0], station.coord[1],centre[0],centre[1]) < r :
+            stations_within.append(station.name)
+        else :
+            stations_within = stations_within
+    return stations_within
+
+    
+def rivers_with_station(stations):
+    river_station = []
+    for station in stations :
+        if station.name not in river_station:
+            river_station.append(station.name)
+    return river_station
+
+

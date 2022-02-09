@@ -1,3 +1,4 @@
+
 # Copyright (C) 2018 Garth N. Wells
 #
 # SPDX-License-Identifier: MIT
@@ -9,7 +10,6 @@ geographical data.
 from .utils import sorted_by_key  
 from .stationdata import build_station_list
 from .station import MonitoringStation
-import numpy
 import math
 
 # Task 1B

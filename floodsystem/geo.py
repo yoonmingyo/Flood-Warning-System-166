@@ -6,7 +6,7 @@ geographical data.
 
 """
 
-from .utils import sorted_by_key  # noqa
+from .utils import sorted_by_key  
 from .stationdata import build_station_list
 from .station import MonitoringStation
 import numpy
@@ -14,16 +14,16 @@ import math
 
 # Task 1B
 def haversine_formula(x1, y1, x2, y2):
-    # difference in x and y
+    # difference in latitudes and longtitudes
     d_X = (x2 - x1) * math.pi / 180.0
     d_Y = (y2 - y1) * math.pi / 180.0
 
-    # converting x1 and x2 to radians
+    # degrees to radians
     x1 = x1 * math.pi / 180.0
     x2 = x2 * math.pi / 180.0
 
     a= math.sin(d_X/2)**2 + math.cos(x1)*math.cos(x2)*(math.sin(d_Y/2)**2)
-    # radius,r of Earth (assuming that it is a perfect sphere)
+    # radius of Earth 
     r = 6371
     distance = 2*r* math.asin(math.sqrt(a))
     return distance

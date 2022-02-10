@@ -17,11 +17,11 @@ def run():
     # Print all the names of all the stations on three specific rivers
 
     print()
-
-    stations_on_river = stations_by_river(stations)
-    for river in ['River Aire', 'River Cam', 'River Thames']:
-        print(river + ':')
-        print(sorted([i.name for i in stations_on_river[river]]))
+    
+    print("\nStations on River Aire:", stations_by_river(stations, "River Aire"))
+    print("\nStations on River Cam:", stations_by_river(stations, "River Cam"))
+    print("\nStations on River Thames:", stations_by_river(stations, "Thames"))
+    
 
 if __name__ == "__main__":
     print("*** Task 1D: CUED Part IA Flood Warning System *** \n")

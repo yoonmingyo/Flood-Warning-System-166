@@ -7,8 +7,6 @@ for manipulating/modifying station data
 """
 
 
-from floodsystem.stationdata import build_station_list
-
 
 class MonitoringStation:
     """This class represents a river level monitoring station"""
@@ -43,16 +41,11 @@ class MonitoringStation:
         return d
     
     def typical_range_consistent(self):
-        if self.typical_range is None or (float(self.typical_range[0])-float(self.typical_range[1]))>0:
-            return False
-        else:
-            return True
-
-stations = build_station_list()
+	    return self.typical_range is not None and self.typical_range[0] <=	self.typical_range[1]
 
 def inconsistent_typical_range_stations(stations):
     inconsistent_list = []
-    for station in stations:
-         if station.typical_range_consistent == False :
-             inconsistent_list.append(station.name)
+    for i in stations:
+        if not i.typical_range_consistent():
+            inconsistent_list.append(i.name)
     return inconsistent_list

@@ -54,53 +54,60 @@ def stations_within_radius(stations, centre, r):
 #Task 1D
 
 def rivers_with_station(stations):
-    """Takes a list of stations and returns a set of all the rivers
-    in alphabetic order upon which those stations are located"""
-    rivers = set()
-    for station in stations:
-        rivers.add(station.river)
-    rivers = sorted(rivers)
-    return rivers
+    """
+    Function that, given a list of station objects,
+    returns a container with the names of the rivers with a monitoring station.
+    
+    Args:
+        stations (list): List of stations (MonitoringStation).
+    
+    Returns:
+        set: Set of names of rivers with a monitoring station.
+    """
 
-def stations_by_river(stations, river):
-    """Takes a list of stations and returns a list of all the station names
-    on a specific river in alphabetic order"""
-    station_names = []
-    for station in stations:
-        if station.river == river:
-            station_names.append(station.name)
-    station_names = sorted(station_names)
-    return station_names
+    return {station.river for station in stations}
+
+
+def stations_by_river(stations):
+    """
+    Function that returns a dictionary that maps river names (the ‘key’)
+    to a list of station objects on a given river.
+    
+    Args:
+        stations (list): List of stations (MonitoringStation).
+    
+    Returns:
+        dict: Keys - river names.
+    """
+
+    return {key: list(value) for key, value in groupby(
+        sorted(
+            stations,
+            key=lambda x: x.river
+        ),
+        lambda x: x.river
+    )}
+
 
 def rivers_by_station_number(stations, N):
-    """Take a list of stations and return the N rivers with the most stations upon
-    them, in the form of a list of tuples in descending order"""
+    """
+    Function that returns a list of tuples containing the river name and the number of stations it has.
+    
+    Args:
+        stations (list): List of stations (MonitoringStation)
+        N (int): The number of desired rivers with the largest number of stations
+    
+    Returns:
+        list: tuple of (river, number of stations on river) sorted in descending order
+    """
 
-    # use another function in geo to build list of non-repeated rivers
-    rivers = rivers_with_station(stations)
-
-    # initialise list
-    rivers_with_count = []
-
-    for river in rivers:
-        count = 0
-        for station in stations:
-            if station.river == river:
-                count += 1
-
-        # now that the number of times the river appears in the station list
-        # has been determined, the river can be appended
-        rivers_with_count.append((river, count))
-
-    # sort list according to number of rivers
-    rivers_with_count = sorted(
-        rivers_with_count, key=lambda x: x[1], reverse=True)
-
-    # if the next river has the same number of stations, N must be increased
-    # to include this river
-    while rivers_with_count[N - 1][1] == rivers_with_count[N][1]:
-        N += 1
-
-    return rivers_with_count[:N]
+    return list(reduce(
+        lambda acc, val: acc + [val] if (len(acc) < N or val[1] == acc[-1][1]) else acc,
+        sorted(
+            [(key, len(i)) for key, i in stations_by_river(stations).items()],
+            key=lambda x: (-x[1], x[0])
+        ),
+        []
+    ))
 
 

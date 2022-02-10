@@ -15,12 +15,18 @@ def run():
     print("\nFirst 10 rivers with stations:", rivers[:10])
 
     # Print all the names of all the stations on three specific rivers
+<<<<<<< HEAD
     print()
 
     stations_on_river = stations_by_river(stations)
     for river in ['River Aire', 'River Cam', 'River Thames']:
         print(river + ':')
         print(sorted([i.name for i in stations_on_river[river]]))
+=======
+    print("\nStations on River Aire:", stations_by_river(stations, "River Aire"))
+    print("\nStations on River Cam:", stations_by_river(stations, "River Cam"))
+    print("\nStations on River Thames:", stations_by_river(stations, "River Thames"))
+>>>>>>> c01e2329acbe478e84ed068260fc8806e17fb250
 
 if __name__ == "__main__":
     print("*** Task 1D: CUED Part IA Flood Warning System *** \n")

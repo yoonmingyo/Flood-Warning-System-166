@@ -20,7 +20,7 @@ def run():
     
     print("\nStations on River Aire:", stations_by_river(stations, "River Aire"))
     print("\nStations on River Cam:", stations_by_river(stations, "River Cam"))
-    print("\nStations on River Thames:", stations_by_river(stations, "Thames"))
+    print("\nStations on River Thames:", stations_by_river(stations, "River Thames"))
     
 
 if __name__ == "__main__":

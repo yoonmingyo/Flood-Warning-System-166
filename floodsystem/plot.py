@@ -4,9 +4,8 @@ from floodsystem.datafetcher import fetch_measure_levels
 
 import numpy as np
 from bokeh.io import output_file
-from bokeh.layouts import gridplot
-from bokeh.models import ColumnDataSource, GMapOptions, HoverTool, DatetimeTickFormatter, Span, BoxAnnotation
-from bokeh.plotting import figure, gmap
+from bokeh.models import DatetimeTickFormatter, Span, BoxAnnotation
+from bokeh.plotting import figure
 from matplotlib.dates import date2num
 from analysis import polyfit
 

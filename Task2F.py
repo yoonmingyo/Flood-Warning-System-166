@@ -5,11 +5,10 @@ from floodsystem.plot import plot_water_levels, plot_water_level_with_fit
 from floodsystem.flood import stations_highest_rel_level
 import matplotlib.pyplot as plt
 
-
 def run():
     """Requirements for Task 2F"""
     DT = 2
-    N = 5
+    N = 6
     p = 4
 
     # Build list of stations

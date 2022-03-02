@@ -21,12 +21,13 @@ def run():
 
     stations = build_station_list()
     update_water_levels(stations)
-    selected = stations_highest_rel_level_2(stations,5)
+    selected = stations_highest_rel_level_2(stations,6)
 
     for station, water_level, measure_id in selected:
-        
         dt = 10
         dates, levels = fetch_measure_levels(measure_id, dt=datetime.timedelta(days=dt))
+        if len(dates) == 0 or len(levels) == 0:
+            continue  # Deal with empty lists appearing
         plot_water_levels(station, dates, levels)
 
 

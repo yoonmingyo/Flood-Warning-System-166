@@ -39,7 +39,6 @@ class MonitoringStation:
         d += "   town:          {}\n".format(self.town)
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
-        d += "   latest level:  {}".format(self.latest_level)
         return d
 
 

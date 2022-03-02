@@ -6,12 +6,11 @@ import datetime
 
 def test_plot_water_levels():
     # Tests checks if plot is built for 'River Cam'
-    # Does not check graph for accuracy
 
     stations = build_station_list()
     update_water_levels(stations)
     for station in stations:
-        if station.name == 'Cam':
+        if station.name == 'River Cam':
             station_cam = station
             break
 

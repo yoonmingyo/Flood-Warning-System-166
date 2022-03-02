@@ -18,15 +18,20 @@ def polyfit(dates, levels, p):
 
     return poly, d0
 
-def grad(dates, levels, p):
-    x = matplotlib.dates.date2num(dates)
-    y = levels
+def flood_warn(stations):
+    for station in stations:
+        if station.relative_water_level() >= 10 or station.relative_water_level() <=-10:
+            continue
+        elif station.relative_water_level() >= 2.5:
+            station.warning_level = 4
+        elif station.relative_water_level() >= 2.1:
+            station.warning_level = 3
+        elif station.relative_water_level() >= 1.7:
+            station.warning_level = 2
+        elif station.relative_water_level() >= 1.3:
+            station.warning_level = 1
+        else:
+            station.warning_level = 0
 
-    p_grad = np.polyfit(x, y, p)
 
-    recent=matplotlib.dates.date2num(dates[1])
-    later=matplotlib.dates.date2num(dates[2])
-    y2 = np.polyval(p_grad,recent)
-    y1 = np.polyval(p_grad,later)
-    grad=(y2-y1)/(recent-later)
-    return grad
+    return stations

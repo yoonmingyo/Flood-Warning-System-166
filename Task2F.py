@@ -23,7 +23,7 @@ def run():
         dates, levels = fetch_measure_levels(
             station.measure_id, dt=datetime.timedelta(days=DT))
         if len(dates) == 0 or len(levels) == 0:
-            continue  # Deal with empty lists appearing
+            continue  # Deal with empty data sets
         plot_water_level_with_fit(station, dates, levels, p)
         plt.show()
 

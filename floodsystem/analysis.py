@@ -2,7 +2,6 @@
 import numpy as np
 import matplotlib
 import matplotlib.dates
-import scipy as sp
 from .station import MonitoringStation
 from .stationdata import build_station_list, update_water_levels
 

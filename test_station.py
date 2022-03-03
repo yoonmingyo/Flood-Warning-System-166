@@ -29,17 +29,17 @@ def test_create_monitoring_station():
 
 
 def test_typical_range_stations():
-    test_station = MonitoringStation("x","x","x",(0,0),None,"x","x")
+    test_station = MonitoringStation("x","x","x",(0,0),(2,3),"x","x")
     test_station_2 = MonitoringStation("x","x","x",(0,0),(5,3),"x","x")
-    assert test_station.typical_range_consistent == False
+    assert test_station.typical_range_consistent == True
     assert test_station_2.typical_range_consistent == False
 
 
-def test_inconsistent_typical_range_consistent():
+def test_inconsistent_typical_range_consistent(stations):
     stations = build_station_list()
-    d = inconsistent_typical_range_stations()
+    d = inconsistent_typical_range_stations(stations)
     for station in stations:
         for inconsistent_station in d:
             if station.name == inconsistent_station:
-                assert station.typical_range_stations == False
+                assert station.typical_range_consistent == False
 

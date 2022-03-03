@@ -35,11 +35,11 @@ def test_typical_range_stations():
     assert test_station_2.typical_range_consistent() == False
 
 
-def test_inconsistent_typical_range_consistent(stations):
+def test_inconsistent_typical_range_stations():
+    """Ensures that all the stations returned by inconsistent_typical_range_stations
+    are actually inconsisten (assumes that inconsistent testing works correctly)
+    """
     stations = build_station_list()
-    d = inconsistent_typical_range_stations(stations)
-    for station in stations:
-        for inconsistent_station in d:
-            if station.name == inconsistent_station:
-                assert station.typical_range_consistent == False
-
+    inconsistent_stations = inconsistent_typical_range_stations(stations)
+    for s in inconsistent_stations:
+        assert not s.typical_range_consistent()

@@ -16,6 +16,7 @@ def stations_highest_rel_level(stations,N):
     mylist =[]
     for n in range(0,N):
         mylist.append(stations_level_over_threshold(stations,-999)[n])
+        # Negative number for tolerance to make sure all the stations are included
     return mylist
 
 

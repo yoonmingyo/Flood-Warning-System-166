@@ -17,6 +17,7 @@ def plot_water_levels(station, dates, levels):
     plt.plot(dates, levels)
     plt.plot([dates[-1], dates[0]], [station.typical_range[0], station.typical_range[0]])
     plt.plot([dates[-1], dates[0]], [station.typical_range[1], station.typical_range[1]])
+    # low and high typical range added to the graph
 
 # Add axis labels, rotate date labels and add plot title
     plt.xlabel('Date')

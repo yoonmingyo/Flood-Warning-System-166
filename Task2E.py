@@ -21,6 +21,7 @@ def run():
     stations = build_station_list()
     update_water_levels(stations)
     selected = stations_highest_rel_level(stations,6)
+    # 6 instead of 5 as the first station has no data for levels and dates (one station is ignored so need N=6 for 5 stations to be displayed)
     #print(selected)
     for station, level in selected:
         dt = 10

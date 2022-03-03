@@ -2,7 +2,7 @@ import datetime
 from floodsystem.stationdata import build_station_list, update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.plot import plot_water_levels, plot_water_level_with_fit
-from floodsystem.flood import stations_highest_rel_level
+from floodsystem.flood import stations_highest_rel_level, stations_highest_rel_level_2
 import matplotlib.pyplot as plt
 
 def run():
@@ -15,7 +15,7 @@ def run():
     stations = build_station_list()
     update_water_levels(stations)
     # Get the station objects out of the list of names
-    risky_station_tuple = stations_highest_rel_level(stations, N)
+    risky_station_tuple = stations_highest_rel_level_2(stations, N)
     risky_stations = [s for s in stations for name, level in risky_station_tuple
                       if s.name == name]
 

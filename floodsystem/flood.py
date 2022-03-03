@@ -20,6 +20,17 @@ def stations_highest_rel_level(stations,N):
     return mylist
 
 
+#altered code to match Task2F
+
+def stations_highest_rel_level_2(stations,N):
+    mylist =[]
+    for station in stations :
+        relative_level = station.relative_water_level()
+        if relative_level is not None:
+                mylist.append((station.name,station.relative_water_level()))
+    k = sorted_by_key(mylist, 1, reverse = True)
+    return k[:N]
+
 
     '''for station in stations :
         relative_level = station.relative_water_level()

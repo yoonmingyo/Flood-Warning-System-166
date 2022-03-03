@@ -5,7 +5,7 @@ from floodsystem.geo import stations_within_radius, stations_by_distance, rivers
 from floodsystem.geo import haversine_formula
 from floodsystem.station import inconsistent_typical_range_stations
 
-stations = build_station_list()
+'''stations = build_station_list()
 centre = [52.2053,0.1218]
 r = 10
 
@@ -46,3 +46,4 @@ def test_rivers_by_station_number():
     assert len(rivers_by_station_number(stations, 30)) >= 30
     biggest_river = rivers_by_station_number(stations, 1)
     assert biggest_river[0][0] == "Thames"
+    '''
